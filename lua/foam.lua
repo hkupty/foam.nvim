@@ -23,6 +23,18 @@ foam.new_float = function(opt)
 
   table.insert(foam.hist, id)
   foam.opts[id] = opt
+
+  return id
+end
+
+foam.center = function(opt)
+  local w = vim.api.nvim_win_get_width(opt.win or 0)
+  local h = vim.api.nvim_win_get_height(opt.win or 0)
+
+  opt.row = (h - opt.height) / 2
+  opt.col = (w - opt.width) / 2
+
+  return foam.new_float(opt)
 end
 
 foam.toggle = function(opt)
